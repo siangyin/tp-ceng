@@ -1,0 +1,17 @@
+body {
+	background-color: #00ff00;
+}
+
+li {
+	display: inline-block;
+	background: yellow;
+	color: blue;
+	margin-right: 10px;
+}
+
+.center {
+	font-family: verdana;
+	font-size: 30px;
+	text-align: center;
+	color: red;
+}

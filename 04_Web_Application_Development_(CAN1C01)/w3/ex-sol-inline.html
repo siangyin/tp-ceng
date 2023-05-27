@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/favicon-32x32.png">
+ 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <title>Inline Css</title>
+</head>
+
+<body>
+  <header>
+    <img src="https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/v1416993852/mdqpcqunqezk1k3wnet1.png" alt="logo" width="300">
+  </header>
+  <main>
+    <article>
+      <h1 style="color: darkgreen">About</h1>
+
+      <p>It can be intimidating for women to learn and ask questions when they are in an <strong style="color: orange">extreme minority</strong style="color: orange">. While open and welcoming, today's budding developer community is up to <strong style="color: orange">91% male</strong>. If we can empower more females with the confidence in their technological capabilities <em style="color: orange">we can begin to change this landscape</em>.
+      </p>
+
+    </article>
+
+    <article>
+      <h2 style="color: darkgreen">Our Locations</h2>
+      <ul>
+        <li>USA
+          <ul>
+            <li><a href="http://meetup.com/girldevelopit">New York</a></li>
+            <li><a href="http://www.meetup.com/girldevelopitcbus">Columbus</a></li>
+            <li><a href="http://www.meetup.com/Girl-Develop-It-Austin">Austin</a></li>
+            <li><a href="http://www.meetup.com/Girl-Develop-It-Philadelphia/">Philly</a></li>
+          </ul>
+        </li>
+        <li>World
+          <ul>
+            <li><a href="http://www.meetup.com/Girl-Develop-It-Ottawa">Ottawa</a></li>
+            <li><a href="http://www.meetup.com/girldevelopit-sydney">Sydney</a></li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 style="color: darkgreen">Upcoming Classes</h2>
+      <table border="1" >
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Topic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color: blue;">New York</td>
+            <td style="color: purple">JavaScript &amp; jQuery</td>
+          </tr>
+          <tr>
+            <td style="color: blue;">San Francisco</td>
+            <td style="color: purple">HTML &amp; CSS</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article>
+      <h1 style="color: darkgreen">Sign Up!</h1>
+      <form>
+        <label for="name" class="form-item form-label">Name:</label>
+        <input type="text" id="name" class="form-item  form-input"/>
+        <br>
+
+        <label for="email" class="form-item form-label">Email:</label>
+        <input type="email" id="email" class="form-item form-input"/>
+        <br>
+
+        <label for="location" class="form-item form-label">Location</label>
+        <select id="location" class="form-item form-select"/>
+          <option>Singapore</option>
+          <option>Malaysia</option>
+          <option>China</option>
+          <option>Korea</option>
+          <option>Japan</option>
+        </select>
+        <br>
+
+        <fieldset>
+          <legend class="form-item form-label">Gender:</legend>
+          <input type="radio" id="female" name="gender" value="female">
+          <label for="female">Female</label><br>
+          <input type="radio" id="male" name="gender" value="male">
+          <label for="male">Male</label><br>
+        </fieldset>
+
+        <label for="experience" class="form-item form-label">Experience</label><br>
+        <textarea id="experience" rows="3"></textarea>
+        <br>
+
+        <button type="submit">Sign Up</button>
+
+      </form>
+    </article>
+  </main>
+  <footer>
+    <a id="twitter" href="http://twitter.com" style="color: lightblue;">Twitter</a> | <a href="http://www.facebook.com">Facebook</a> | <a href="http://www.flickr.com">Flickr</a>
+  </footer>
+</body>
+
+</html>

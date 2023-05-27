@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<p>
+			Click the button to open an about:blank page in a new browser window that
+			is 200px wide and 100px tall.
+		</p>
+		<button onclick="myFunction()">Try it</button>
+		<script>
+			function myFunction() {
+				// window.open(URL, name, specs, replace)
+				// window.open("", "", "width=200,height=100");
+				//alert("Acknowledge the page")
+				if (confirm("Press Button")) {
+					console.log("You pressed OK!");
+				} else {
+					console.log("You prssed CANCEL!");
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2 {
+color: darkgreen;
+}
+
+p strong,
+p em {
+color: orange;
+}
+
+table td {
+color: purple;
+}
+
+.location {
+color: blue;
+}
+
+form label,
+form legend {
+color: darkred;
+}
+
+.required {
+color: red;
+}
+
+#twitter {
+color: lightblue;
+}
+
+fieldset {
+  width: 300px;
+}
+
+.form-label {
+  display:inline-flex;
+  width: 100px;
+}
+.form-input {
+   width: 200px;
+}
+
+.form-select {
+  width: 208px;
+}
+
+.form-item {
+  margin: 0.25em;
+}
+button{
+  margin: 10px 0 30px 0;
+}

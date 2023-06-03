@@ -1,5 +1,6 @@
 const pool = require("../database/connectSql2");
 const jwt = require("jsonwebtoken");
+const findUsers = require("./userController");
 
 const createJWT = (payload) =>
 	(token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -57,6 +58,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
 	try {
 		const { email, password } = req.body;
+
 		const [users] = await pool.query("select * from users where email = ?", [
 			email,
 		]);
@@ -78,6 +80,7 @@ const login = async (req, res) => {
 				token,
 			});
 		}
+
 		return res.status(401).json({
 			status: "Invalid credentials",
 		});

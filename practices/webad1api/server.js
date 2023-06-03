@@ -13,8 +13,10 @@ app.use(express.json());
 
 // ROUTERS
 const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/userRoutes");
 // ROUTES
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
 
 app.get("/", (req, res) => {
 	res.send("<h1>Hello</h1>");

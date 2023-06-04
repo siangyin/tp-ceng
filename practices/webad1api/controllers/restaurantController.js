@@ -36,7 +36,7 @@ const createRestaurant = async (req, res) => {
 					sql = `insert into Restaurant_Category_Type (restaurantId, categoryType, typeName) values (?, ? ,?)`;
 					sqlVal = [restaurant.restaurantId, "Type", val];
 					const [row] = await pool.query(sql, sqlVal);
-					console.log("cat type", row);
+
 					!row.affectedRows &&
 						msg.push(`restaurant type ${val} insertion failed`);
 				}
@@ -45,7 +45,7 @@ const createRestaurant = async (req, res) => {
 					sql = `insert into Restaurant_Category_Type (restaurantId, categoryType, typeName) values (?, ? ,?)`;
 					sqlVal = [restaurant.restaurantId, "Cuisine", val];
 					const [row] = await pool.query(sql, sqlVal);
-					console.log("cuisine", row);
+
 					!row.affectedRows &&
 						msg.push(`restaurant cuisine  ${val} insertion failed`);
 				}
@@ -138,9 +138,47 @@ const getRestaurantsList = async (req, res) => {
 // GET RESTAURANT
 const getRestaurantDetail = async (req, res) => {
 	try {
+		const { id } = req.params;
+		const data = {};
+
+		// get restaurant
+		const [row1] = await pool.query(
+			"select * from restaurants where restaurantId = ?",
+			[id]
+		);
+		data.restaurant = row1[0] ?? null;
+		console.log(row1);
+		// get category types
+		const [row2] = await pool.query(
+			"select * from Restaurant_Category_Type where restaurantId = ?",
+			[id]
+		);
+		data.categories = row2[0] ?? null;
+		console.log(row2);
+		// get opening hours
+		const [row3] = await pool.query(
+			"select * from Opening_Hours where restaurantId = ?",
+			[id]
+		);
+		data.openHrs = row3[0] ?? null;
+		console.log(row3);
+		// get photos
+		const [row4] = await pool.query(
+			"select * from Restaurant_Photo where restaurantId = ?",
+			[id]
+		);
+		data.photos = row4[0] ?? null;
+		console.log(row4);
+		// get promotions
+		const [row5] = await pool.query(
+			"select * from Promotions where restaurantId = ?",
+			[id]
+		);
+		data.promotions = row5[0] ?? null;
+		console.log(row5);
 		res.status(200).json({
 			status: "OK",
-			msg: "Request submitted getRestaurantDetail",
+			data: data,
 		});
 	} catch (error) {
 		res.status(500).json({

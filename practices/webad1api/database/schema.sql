@@ -49,7 +49,7 @@ reviewId INT(5),
 photoUrl TEXT NOT NULL,
 defaultPhoto BOOLEAN DEFAULT false,
 createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-addedBy INT(5) NOT NULL,
+addedBy INT(5),
 CONSTRAINT FK_restaurant_photo FOREIGN KEY (restaurantId)
     REFERENCES Restaurants(restaurantId),
 	CONSTRAINT FK_review_photo FOREIGN KEY (reviewId)
@@ -62,8 +62,7 @@ CREATE TABLE Opening_Hours (
   openhrsId INT(5) AUTO_INCREMENT PRIMARY KEY,
   restaurantId INT(5) NOT NULL,
   dayOfWeek VARCHAR(20) NOT NULL,
-  openingTime TIME NOT NULL,
-  closingTime TIME NOT NULL,
+  valueText	VARCHAR(255) NOT NULL,
 CONSTRAINT FK_restaurant_openhrs FOREIGN KEY (restaurantId)
     REFERENCES Restaurants(restaurantId)
 );

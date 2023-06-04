@@ -12,7 +12,6 @@ const getUsers = async (req, res) => {
 		if (user[0] && user[0].role === "admin") {
 			const [users] = await pool.query("select * from users");
 			if (users.length) {
-				console.log(user, users); //console
 				return res.status(200).json({
 					status: "OK",
 					data: users,
@@ -30,7 +29,7 @@ const getUsers = async (req, res) => {
 		});
 	} catch (error) {
 		res.status(500).json({
-			status: "Server error",
+			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}
@@ -39,16 +38,19 @@ const getUsers = async (req, res) => {
 const updateUser = async (req, res) => {
 	try {
 		const { userId } = req.params;
-		const values = [];
-		let txt = "";
+
+		let sqlVal = [];
+		let sql = "";
+
 		for (const prop in req.body) {
-			txt += `, ${prop} = ?`;
-			values.push(req.body[prop]);
+			sql += `, ${prop} = ?`;
+			sqlVal.push(req.body[prop]);
 		}
-		values.push(userId);
-		let data;
-		const sql = `update users set ${txt.replace(",", "")} where userId = ?`;
-		const [row] = await pool.query(sql, [...values, userId]);
+
+		sqlVal.push(userId);
+
+		sql = `update users set ${sql.replace(",", "")} where userId = ?`;
+		const [row] = await pool.query(sql, [...sqlVal, userId]);
 
 		if (row.affectedRows) {
 			return res.status(200).json({
@@ -62,7 +64,7 @@ const updateUser = async (req, res) => {
 		});
 	} catch (error) {
 		res.status(500).json({
-			status: "Server error",
+			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}
@@ -87,7 +89,7 @@ const resetPassword = async (req, res) => {
 		});
 	} catch (error) {
 		res.status(500).json({
-			status: "Server error",
+			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}

@@ -1,6 +1,5 @@
 const pool = require("../database/connectSql2");
 const jwt = require("jsonwebtoken");
-const findUsers = require("./userController");
 
 const createJWT = (payload) =>
 	(token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -49,7 +48,7 @@ const register = async (req, res) => {
 		}
 	} catch (error) {
 		res.status(500).json({
-			status: "Server error",
+			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}
@@ -86,7 +85,7 @@ const login = async (req, res) => {
 		});
 	} catch (error) {
 		res.status(500).json({
-			status: "Server error",
+			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}

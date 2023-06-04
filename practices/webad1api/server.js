@@ -15,11 +15,13 @@ app.use(express.json());
 const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/userRoutes");
 const restaurantRouter = require("./routes/restaurantRoutes");
+const reviewRouter = require("./routes/reviewRoutes");
 
 // ROUTES
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/restaurant", restaurantRouter);
+app.use("/api/v1/review", reviewRouter);
 
 app.get("/", (req, res) => {
 	res.send("<h1>Hello</h1>");

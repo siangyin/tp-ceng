@@ -42,7 +42,7 @@ const register = async (req, res) => {
 				// new user registration failed
 				return res.status(406).json({
 					status: "Request failed",
-					msg: "error",
+					msg: "Request failed",
 				});
 			}
 		}
@@ -75,6 +75,7 @@ const login = async (req, res) => {
 
 			return res.status(200).json({
 				status: "OK",
+				msg: "User login successfully",
 				data: user,
 				token,
 			});
@@ -82,6 +83,7 @@ const login = async (req, res) => {
 
 		return res.status(401).json({
 			status: "Invalid credentials",
+			msg: "Invalid credentials",
 		});
 	} catch (error) {
 		res.status(500).json({

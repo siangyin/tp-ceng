@@ -24,7 +24,7 @@ city VARCHAR(100),
 country VARCHAR(100),
 postalCode VARCHAR(20),
 area VARCHAR(50),
-status VARCHAR(10) DEFAULT 'active'
+status VARCHAR(10) DEFAULT 'draft'
 );
 
 CREATE TABLE Restaurant_Review (
@@ -34,7 +34,7 @@ CREATE TABLE Restaurant_Review (
   title VARCHAR(255),
   comment TEXT NOT NULL,
   rating DECIMAL(2,1) NOT NULL,
-	status VARCHAR(10) DEFAULT 'active',
+	status VARCHAR(10) DEFAULT 'draft',
   createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	CONSTRAINT FK_restaurant_review FOREIGN KEY (restaurantId)
     REFERENCES Restaurants(restaurantId),

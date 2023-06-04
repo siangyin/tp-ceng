@@ -25,7 +25,8 @@ const getUsers = async (req, res) => {
 		}
 
 		res.status(404).json({
-			status: "No data",
+			status: "Not found",
+			msg: "No data found",
 		});
 	} catch (error) {
 		res.status(500).json({
@@ -55,12 +56,14 @@ const updateUser = async (req, res) => {
 		if (row.affectedRows) {
 			return res.status(200).json({
 				status: "OK",
+				msg: "user detail updated",
 				data: row,
 			});
 		}
 
 		res.status(400).json({
 			status: "Invalid request",
+			msg: "Invalid request",
 		});
 	} catch (error) {
 		res.status(500).json({
@@ -86,6 +89,7 @@ const resetPassword = async (req, res) => {
 		}
 		return res.status(400).json({
 			status: "Bad request",
+			msg: "Request failed",
 		});
 	} catch (error) {
 		res.status(500).json({

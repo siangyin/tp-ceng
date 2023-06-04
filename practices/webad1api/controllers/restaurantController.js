@@ -142,40 +142,6 @@ const getRestaurantDetail = async (req, res) => {
 			);
 			data[propKey] = row[0] ?? null;
 		}
-		// // get restaurant
-		// const [row1] = await pool.query(
-		// 	"select * from restaurants where restaurantId = ?",
-		// 	[id]
-		// );
-		// data.restaurant = row1[0] ?? null;
-
-		// // get category types
-		// const [row2] = await pool.query(
-		// 	"select * from Restaurant_Category_Type where restaurantId = ?",
-		// 	[id]
-		// );
-		// data.categories = row2[0] ?? null;
-
-		// // get opening hours
-		// const [row3] = await pool.query(
-		// 	"select * from Opening_Hours where restaurantId = ?",
-		// 	[id]
-		// );
-		// data.openHrs = row3[0] ?? null;
-
-		// // get photos
-		// const [row4] = await pool.query(
-		// 	"select * from Restaurant_Photo where restaurantId = ?",
-		// 	[id]
-		// );
-		// data.photos = row4[0] ?? null;
-
-		// // get promotions
-		// const [row5] = await pool.query(
-		// 	"select * from Promotions where restaurantId = ?",
-		// 	[id]
-		// );
-		// data.promotions = row5[0] ?? null;
 
 		res.status(200).json({
 			status: "OK",
@@ -184,6 +150,50 @@ const getRestaurantDetail = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({
 			status: "Server error",
+			msg: error,
+		});
+	}
+};
+
+// GET RESTAURANTS LISTING
+const getRestaurantsList = async (req, res) => {
+	try {
+		const data = [];
+		// let msg;
+		const relatedTables = {
+			categories: "Restaurant_Category_Type",
+			openHrs: "Opening_Hours",
+			photos: "Restaurant_Photo",
+			promotions: "Promotions",
+		};
+		const [list] = await pool.query("select * from restaurants");
+
+		if (list.length > 0) {
+			for (const restObj of list) {
+				const alldb = { restaurant: restObj };
+				for (const propKey in relatedTables) {
+					let [row] = await pool.query(
+						`select * from ${relatedTables[propKey]} where restaurantId = ?`,
+						[restObj.restaurantId]
+					);
+					alldb[propKey] = row[0] ?? null;
+				}
+				data.push(alldb);
+			}
+			res.status(200).json({
+				status: "OK",
+				data: data,
+			});
+		}
+
+		res.status(404).json({
+			status: "Not found",
+			msg: "No data found",
+			data: list,
+		});
+	} catch (error) {
+		res.status(500).json({
+			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}
@@ -199,23 +209,6 @@ const updateRestaurant = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({
 			status: "Server error",
-			msg: error,
-		});
-	}
-};
-
-// GET RESTAURANTS LISTING
-const getRestaurantsList = async (req, res) => {
-	try {
-		const [rows] = await pool.query("select * from Category_Type");
-		console.log(rows);
-		res.status(200).json({
-			status: "OK",
-			msg: "Request submitted getRestaurantsList",
-		});
-	} catch (error) {
-		res.status(500).json({
-			status: "Something went wrong, please try again",
 			msg: error,
 		});
 	}

@@ -83,7 +83,7 @@ typeName VARCHAR(50),
     FOREIGN KEY (restaurantId) REFERENCES Restaurants(restaurantId)
 );
 
-CREATE TABLE Promotion (
+CREATE TABLE Promotions (
 promoId INT(5) AUTO_INCREMENT PRIMARY KEY,
 restaurantId INT(5) NOT NULL,
 title VARCHAR(255) NOT NULL,

@@ -2,7 +2,16 @@ const express = require("express");
 const app = express();
 
 require("dotenv").config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+// const cors = require("cors");
+
+// app.use(
+// 	cors({
+// 		origin: "*",
+// 		methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"],
+// 		credentials: true,
+// 	})
+// );
 
 //(middleware) parse form data. The express.urlencoded() function is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
 // common approach using extended: false
@@ -10,6 +19,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // json so that app.post can pass back data from form. otherwise FE will not be able to fetch the data.
 app.use(express.json());
+
+app.use(express.static("./public"));
 
 // ROUTERS
 const authRouter = require("./routes/authRoutes");
@@ -23,10 +34,11 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/restaurant", restaurantRouter);
 app.use("/api/v1/review", reviewRouter);
 
-app.get("/", (req, res) => {
-	res.send("<h1>Hello</h1>");
+app.get("/index.html", (req, res) => {
+	console.log(req.params);
+	res.sendFile(__dirname + "/" + "index.html");
 });
 
 app.listen(PORT, (req, res) => {
-	console.log(`server running on ${PORT}`);
+	console.log("app running", PORT);
 });

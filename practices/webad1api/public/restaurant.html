@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="images/yummy.png" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+		/>
+		<!-- UIkit CSS -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/css/uikit.min.css"
+		/>
+
+		<!-- UIkit JS -->
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit-icons.min.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/restaurant.css" />
+		<title>Restaurant Review</title>
+	</head>
+	<body onload="loadRestaurant()">
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+			<div class="navbar-brand">
+				<a class="navbar-item" href="index.html"> DineRater </a>
+
+				<a
+					role="button"
+					class="navbar-burger"
+					aria-label="menu"
+					aria-expanded="false"
+					data-target="navbarBasicExample"
+				>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+					<span aria-hidden="true"></span>
+				</a>
+			</div>
+
+			<div id="navbarBasicExample" class="navbar-menu">
+				<div class="navbar-start">
+					<div class="navbar-item has-dropdown is-hoverable">
+						<a class="navbar-link">All Restaurants </a>
+
+						<div class="navbar-dropdown">
+							<a class="navbar-item"> Chinese Food </a>
+							<a class="navbar-item"> Korean Food </a>
+							<a class="navbar-item"> Japanese Food </a>
+							<hr class="navbar-divider" />
+							<a class="navbar-item"> New Added </a>
+							<a class="navbar-item"> Popular </a>
+						</div>
+					</div>
+					<div class="navbar-item">
+						<a class="navbar-item" href="contact.html"> Contact </a>
+					</div>
+					<div class="navbar-item">
+						<a class="navbar-item" href="review.html"> Review </a>
+					</div>
+				</div>
+
+				<div class="navbar-end">
+					<div class="navbar-item">
+						<div class="buttons">
+							<a class="button is-primary">
+								<strong>Sign up</strong>
+							</a>
+							<a class="button is-light"> Log in </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<main id="content">
+			<div
+				class="uk-child-width-expand@s"
+				uk-grid
+				uk-height-match="target: > div > .uk-card"
+			>
+				<div>
+					<div class="uk-card uk-card-default">
+						<div class="uk-card-media-top">
+							<img onclick="clickRestaurantImg('bk')" src="images/bk.png" />
+						</div>
+						<div class="uk-card-body">
+							<h3 class="uk-card-title">Restaurant Name</h3>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt.
+							</p>
+							<a class="button is-danger" href="#modal-sections" uk-toggle>
+								View Detail
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="uk-card uk-card-default">
+						<div class="uk-card-media-top">
+							<img onclick="clickRestaurantImg('kfc')" src="images/kfc.png" />
+						</div>
+						<div class="uk-card-body">
+							<h3 class="uk-card-title">Restaurant Name</h3>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt.
+							</p>
+							<a class="button is-danger" href="#modal-sections" uk-toggle>
+								View Detail
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="uk-card uk-card-default">
+						<div class="uk-card-media-top">
+							<img onclick="clickRestaurantImg('mcd')" src="images/mcd.png" />
+						</div>
+						<div class="uk-card-body">
+							<h3 class="uk-card-title">Restaurant Name</h3>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt.
+							</p>
+							<a class="button is-danger" href="#modal-sections" uk-toggle>
+								View Detail
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="uk-card uk-card-default">
+						<div class="uk-card-media-top">
+							<img
+								onclick="clickRestaurantImg('subway')"
+								class="uk-align-center"
+								src="images/subway.png"
+							/>
+						</div>
+						<div class="uk-card-body">
+							<h3 class="uk-card-title">Restaurant Name</h3>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt.
+							</p>
+							<a class="button is-danger" href="#modal-sections" uk-toggle>
+								View Detail
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  -->
+		</main>
+
+		<!-- MODAL -->
+
+		<div id="modal-sections" uk-modal>
+			<div class="uk-modal-dialog">
+				<button class="uk-modal-close-default" type="button" uk-close></button>
+				<div class="uk-modal-header">
+					<h2 class="uk-modal-title">Restaurant Detail</h2>
+				</div>
+				<div class="uk-modal-body">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+						ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+						aliquip ex ea commodo consequat. Duis aute irure dolor in
+						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+						pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+						culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+				<div class="uk-modal-footer uk-text-right">
+					<button class="uk-button uk-button-danger">Review</button>
+					<button class="uk-button uk-button-danger" type="button">Save</button>
+					<button
+						class="uk-button uk-button-default uk-modal-close"
+						type="button"
+					>
+						Cancel
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- js file -->
+		<script src="js/restaurant.js"></script>
+	</body>
+</html>

@@ -1,194 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-- UIkit CSS & JS-->
-		<link
-			rel="stylesheet"
-			href="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/css/uikit.min.css"
-		/>
-		<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit-icons.min.js"></script>
 
-		<!-- dynamic -->
-		<link rel="stylesheet" href="css/index.css" />
-		<title>Document</title>
-	</head>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- UIkit CSS & JS-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/css/uikit.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit-icons.min.js"></script>
 
-	<body>
-		<!-- NAVBAR & BREADCRMB START -->
-		<header>
-			<!-- NAVBAR START -->
+	<!-- dynamic -->
 
-			<nav class="uk-navbar-container">
-				<div class="uk-container">
-					<div uk-navbar>
-						<div class="uk-navbar-left">
-							<ul class="uk-navbar-nav">
-								<li class="uk-active"><a href="/">DINEADVISOR</a></li>
-								<li>
-									<a href="#">Restaurants<span uk-navbar-parent-icon></span></a>
-									<div class="uk-navbar-dropdown">
-										<ul class="uk-nav uk-navbar-dropdown-nav">
-											<li class="uk-active"><a href="#">All Restaurants</a></li>
-											<li><a href="#">Popular Restaurants</a></li>
-											<li class="uk-nav-header">Cuisine</li>
-											<li><a href="#">Asian</a></li>
-											<li><a href="#">Chinese</a></li>
-											<li><a href="#">Cafe</a></li>
-											<li class="uk-nav-divider"></li>
-											<li><a href="#">Special Offers</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<div class="uk-navbar-right">
-							<ul class="uk-navbar-nav">
-								<li>
-									<a href="#"
-										><span uk-icon="user"></span>
-										<span uk-navbar-parent-icon></span
-									></a>
-									<div class="uk-navbar-dropdown">
-										<ul class="uk-nav uk-navbar-dropdown-nav">
-											<li class="uk-active"><a href="#">Register</a></li>
-											<li><a href="#">Login</a></li>
-											<li class="uk-nav-header">Account</li>
-											<li><a href="#">Profile</a></li>
-											<li><a href="#">Reviews</a></li>
-											<li><a href="#">Favourite</a></li>
-											<li class="uk-nav-divider"></li>
-											<li><a href="#">Log out</a></li>
-										</ul>
-									</div>
-								</li>
-							</ul>
-						</div>
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- NAVBAR & BREADCRMB START -->
+	<header id="commonHeader"></header>
+	<!-- NAVBAR & BREADCRUMB END -->
+
+	<!-- MAIN CONTENT START -->
+	<main class="uk-margin-medium uk-container">
+		<div class="uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center" uk-grid>
+			<div>
+				<div class="uk-card uk-card-default uk-card-body">Item</div>
+			</div>
+			<div class="uk-width-expand">
+				<div class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" uk-grid>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
 					</div>
-				</div>
-			</nav>
-
-			<!-- NAVBAR END -->
-
-			<!-- BREADCRUMB START -->
-			<nav class="uk-container uk-margin" aria-label="Breadcrumb">
-				<ul class="uk-breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Restaurants</a></li>
-				</ul>
-			</nav>
-
-			<!-- BREADCRUMB END -->
-		</header>
-
-		<!-- NAVBAR & BREADCRUMB END -->
-
-		<!-- MAIN CONTENT START -->
-		<main class="uk-margin-medium uk-container">
-			<div
-				class="uk-child-width-1-1 uk-child-width-1-3@s uk-child-width-1-4@m uk-text-center"
-				uk-grid
-			>
-				<div>
-					<div class="uk-card uk-card-default uk-card-body">Item</div>
-				</div>
-				<div class="uk-width-expand@s">
-					<div
-						class="uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center"
-						uk-grid
-					>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
-						<div>
-							<div class="uk-card uk-card-primary uk-card-body">Item</div>
-						</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
+					</div>
+					<div>
+						<div class="uk-card uk-card-default uk-card-body">Item</div>
 					</div>
 				</div>
 			</div>
-			<!-- ASIDE BAR START -->
+		</div>
+	</main>
+	<!-- MAIN CONTENT END -->
 
-			<!-- ASIDE BAR END -->
-			<!-- CARDS CONTAINER START -->
+	<!-- FOOTER START -->
+	<footer id="commonFooter"></footer>
+	<!-- FOOTER END -->
 
-			<!-- CARDS CONTAINER END -->
-		</main>
+	<!-- <script src="js/index.js"></script> -->
+	<script src="js/common.js"></script>
+</body>
 
-		<!-- MAIN CONTENT END -->
-
-		<!-- FOOTER START -->
-		<footer>
-			<div
-				class="uk-position-bottom-center uk-position-relative uk-margin uk-text-center"
-			>
-				<ul class="uk-subnav uk-margin-remove-bottom">
-					<li class="uk-text-bold"><a href="#">DINEADVISOR</a></li>
-					<li><a href="#">About us</a></li>
-					<li><a href="#">Contact us</a></li>
-				</ul>
-				<span class="uk-text-meta"
-					>© 2023 DineAdvisor. All rights reserved.</span
-				>
-			</div>
-		</footer>
-
-		<!-- FOOTER END -->
-	</body>
 </html>

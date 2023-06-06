@@ -47,8 +47,16 @@ const navbar = `
 							<a href="#"><span uk-icon="user"></span><span uk-navbar-parent-icon></span></a>
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
-									<li class="uk-active"><a href="#">Register</a></li>
-									<li><a href="#">Login</a></li>
+									${
+										currentPath === "/register.html"
+											? '<li class="uk-active">'
+											: "<li>"
+									}<a href="/register.html">Register</a></li>
+									${
+										currentPath === "/login.html"
+											? '<li class="uk-active">'
+											: "<li>"
+									}<a href="/login.html">Login</a></li>
 									<li class="uk-nav-header">Account</li>
 									<li><a href="#">Profile</a></li>
 									<li><a href="#">Reviews</a></li>
@@ -98,6 +106,8 @@ function updateHeadElements() {
 	let filename = "";
 	if (currentPath == "/") {
 		filename = "/index.html";
+	} else {
+		filename = currentPath;
 	}
 	let newScript = document.createElement("script");
 	newScript.setAttribute(
@@ -105,15 +115,16 @@ function updateHeadElements() {
 		`js${filename.replace(".html", ".js").replace("/public", "")}`
 	);
 	newScript.setAttribute("type", "text/javascript");
+	console.log(newScript);
 	document.head.appendChild(newScript);
 	// <link rel="stylesheet" href="css/index.css" />
-	let newStyleLink = document.createElement("link");
-	newStyleLink.setAttribute(
-		"href",
-		`css${filename.replace(".html", ".css").replace("/public", "")}`
-	);
-	newStyleLink.setAttribute("rel", "stylesheet");
-	document.head.appendChild(newStyleLink);
+	// let newStyleLink = document.createElement("link");
+	// newStyleLink.setAttribute(
+	// 	"href",
+	// 	`css${filename.replace(".html", ".css").replace("/public", "")}`
+	// );
+	// newStyleLink.setAttribute("rel", "stylesheet");
+	// document.head.appendChild(newStyleLink);
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {

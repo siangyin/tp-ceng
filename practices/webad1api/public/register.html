@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- UIkit CSS & JS-->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/css/uikit.min.css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/uikit@3.16.19/dist/js/uikit-icons.min.js"></script>
+		<link rel="stylesheet" href="css/index.css" />
+		<!-- dynamic -->
+
+		<title>Register</title>
+	</head>
+
+	<body>
+		<!-- NAVBAR & BREADCRMB START -->
+		<header id="commonHeader"></header>
+		<!-- NAVBAR & BREADCRUMB END -->
+
+		<!-- MAIN CONTENT START -->
+		<main class="uk-margin-medium uk-container">
+			<div
+				id="user-account-content"
+				class="uk-grid-collapse uk-child-width-expand@s"
+				uk-grid
+			>
+				<div class="uk-visible@s">
+					<img src="images/mobile-login.svg" alt="mobile-login" />
+				</div>
+
+				<div
+					class="uk-margin-auto uk-card uk-card-body uk-padding-remove-right"
+				>
+					<form>
+						<h2 class="uk-heading-divider uk-margin-large-bottom">
+							Create Account
+						</h2>
+						<label for="username">Username</label>
+						<input
+							class="uk-input uk-margin-small-bottom"
+							type="text"
+							placeholder="Username"
+							id="username"
+						/>
+						<label for="email">Email</label>
+						<input
+							class="uk-input uk-margin-small-bottom"
+							type="email"
+							placeholder="Email"
+						/>
+						<label for="password">Password</label>
+						<input
+							class="uk-input uk-margin-small-bottom"
+							type="password"
+							placeholder="Password"
+						/>
+
+						<button
+							id="userRegisterBtn"
+							class="uk-margin-small uk-button uk-button-danger uk-width-1-1"
+						>
+							Register
+						</button>
+					</form>
+					<legend>
+						Already have an account?
+						<a class="uk-link-text uk-text-danger" href="/login.html"
+							>Login here</a
+						>
+					</legend>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN CONTENT END -->
+
+		<!-- FOOTER START -->
+		<footer id="commonFooter"></footer>
+		<!-- FOOTER END -->
+
+		<!-- <script src="js/index.js"></script> -->
+		<script src="js/common.js"></script>
+	</body>
+</html>

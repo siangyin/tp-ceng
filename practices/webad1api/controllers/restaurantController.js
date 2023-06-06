@@ -64,7 +64,7 @@ const createRestaurant = async (req, res) => {
 				}
 
 				if (photos) {
-					// insert Opening_Hours
+					// insert Restaurant_Photo
 					// E.G. INSERT INTO Restaurant_Photo (restaurantId, photoUrl, defaultPhoto, createdOn, addedBy)
 
 					for (const item of photos) {

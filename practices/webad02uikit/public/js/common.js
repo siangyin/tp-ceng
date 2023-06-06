@@ -5,12 +5,13 @@
 
 let currentPath = window.location.pathname;
 let currentParams = new URLSearchParams(window.location.search);
-// console.log(currentPath, window.location.search); // /index.html, ?sampl=ooo&sample=oo
+console.log(currentPath, window.location.search); // /index.html, ?sampl=ooo&sample=oo
+// const BE_URL = "http://localhost:3000";
 
 function convertToChildNode(item) {
-  const tmp = document.createElement("div");
-  tmp.innerHTML = item;
-  return tmp.childNodes;
+	const tmp = document.createElement("div");
+	tmp.innerHTML = item;
+	return tmp.childNodes;
 }
 
 const commonHeader = document.getElementById("commonHeader");
@@ -94,22 +95,25 @@ childNodes = convertToChildNode(footer);
 commonFooter.append(...childNodes);
 
 function updateHeadElements() {
-  let newScript = document.createElement("script");
-  newScript.setAttribute("src", `js${currentPath.replace(".html", ".js")}`);
-  newScript.setAttribute("type", "text/javascript");
-  document.head.appendChild(newScript);
-  // <link rel="stylesheet" href="css/index.css" />
-  let newStyleLink = document.createElement("link");
-  newStyleLink.setAttribute(
-    "href",
-    `css${currentPath.replace(".html", ".css")}`
-  );
-  newStyleLink.setAttribute("rel", "stylesheet");
-  document.head.appendChild(newStyleLink);
+	let newScript = document.createElement("script");
+	newScript.setAttribute(
+		"src",
+		`js${currentPath.replace(".html", ".js").replace("/public", "")}`
+	);
+	newScript.setAttribute("type", "text/javascript");
+	document.head.appendChild(newScript);
+	// <link rel="stylesheet" href="css/index.css" />
+	let newStyleLink = document.createElement("link");
+	newStyleLink.setAttribute(
+		"href",
+		`css${currentPath.replace(".html", ".css").replace("/public", "")}`
+	);
+	newStyleLink.setAttribute("rel", "stylesheet");
+	document.head.appendChild(newStyleLink);
 }
 
 window.addEventListener("DOMContentLoaded", (event) => {
-  updateHeadElements();
-  console.log(document.readyState); // loading - interactive - complete
-  console.log("page is fully loaded" + event.timeStamp);
+	updateHeadElements();
+	console.log(document.readyState); // loading - interactive - complete
+	console.log("page is fully loaded" + event.timeStamp);
 });

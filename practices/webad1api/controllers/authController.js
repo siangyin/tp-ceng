@@ -58,12 +58,13 @@ const login = async (req, res) => {
 	try {
 		const { email, password } = req.body;
 
-		const [users] = await pool.query("select * from users where email = ?", [
-			email,
-		]);
+		const [users] = await pool.query(
+			"select * from users where email = ? and password = ?",
+			[email, password]
+		);
 
-		// found user with email & check if password matched
-		if (users[0] && users[0].password === password) {
+		// found user with correct email & password
+		if (users[0]) {
 			const user = {
 				userId: users[0].userId,
 				email: users[0].email,
@@ -81,7 +82,7 @@ const login = async (req, res) => {
 			});
 		}
 
-		return res.status(401).json({
+		res.status(401).json({
 			status: "Invalid credentials",
 			msg: "Invalid credentials",
 		});

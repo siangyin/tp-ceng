@@ -86,8 +86,8 @@ const footer = `
     <div class="uk-position-bottom-center uk-position-relative uk-margin uk-text-center">
         <ul class="uk-subnav uk-margin-remove-bottom">
             <li class="uk-text-bold"><a href="#">DINEADVISOR</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Contact us</a></li>
+            <li><a href="/about.html">About us</a></li>
+            <li><a href="/contact.html">Contact us</a></li>
         </ul>
         <span class="uk-text-meta">© 2023 DineAdvisor. All rights reserved.</span>
     </div>
@@ -102,30 +102,30 @@ commonHeader.append(...childNodes);
 childNodes = convertToChildNode(footer);
 commonFooter.append(...childNodes);
 
-function updateHeadElements() {
-	let filename = "";
-	if (currentPath == "/") {
-		filename = "/index.html";
-	} else {
-		filename = currentPath;
-	}
-	let newScript = document.createElement("script");
-	newScript.setAttribute(
-		"src",
-		`js${filename.replace(".html", ".js").replace("/public", "")}`
-	);
-	newScript.setAttribute("type", "text/javascript");
-	console.log(newScript);
-	document.head.appendChild(newScript);
-	// <link rel="stylesheet" href="css/index.css" />
-	// let newStyleLink = document.createElement("link");
-	// newStyleLink.setAttribute(
-	// 	"href",
-	// 	`css${filename.replace(".html", ".css").replace("/public", "")}`
-	// );
-	// newStyleLink.setAttribute("rel", "stylesheet");
-	// document.head.appendChild(newStyleLink);
-}
+// function updateHeadElements() {
+// 	let filename = "";
+// 	if (currentPath == "/") {
+// 		filename = "/index.html";
+// 	} else {
+// 		filename = currentPath;
+// 	}
+// 	let newScript = document.createElement("script");
+// 	newScript.setAttribute(
+// 		"src",
+// 		`js${filename.replace(".html", ".js").replace("/public", "")}`
+// 	);
+// 	newScript.setAttribute("type", "text/javascript");
+// 	console.log(newScript);
+// 	document.head.appendChild(newScript);
+// 	// <link rel="stylesheet" href="css/index.css" />
+// 	// let newStyleLink = document.createElement("link");
+// 	// newStyleLink.setAttribute(
+// 	// 	"href",
+// 	// 	`css${filename.replace(".html", ".css").replace("/public", "")}`
+// 	// );
+// 	// newStyleLink.setAttribute("rel", "stylesheet");
+// 	// document.head.appendChild(newStyleLink);
+// }
 
 window.addEventListener("DOMContentLoaded", (event) => {
 	updateHeadElements();

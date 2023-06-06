@@ -133,6 +133,7 @@ const getRestaurantDetail = async (req, res) => {
 			openHrs: "Opening_Hours",
 			photos: "Restaurant_Photo",
 			promotions: "Promotions",
+			reviews: "Restaurant_Review",
 		};
 
 		for (const propKey in relatedTables) {
@@ -140,10 +141,10 @@ const getRestaurantDetail = async (req, res) => {
 				`select * from ${relatedTables[propKey]} where restaurantId = ?`,
 				[id]
 			);
-			data[propKey] = row[0] ?? null;
+			data[propKey] = row ?? null;
 		}
 
-		res.status(200).json({
+		return res.status(200).json({
 			status: "OK",
 			data: data,
 		});
@@ -162,7 +163,7 @@ const getRestaurantsList = async (req, res) => {
 		// let msg;
 		const relatedTables = {
 			categories: "Restaurant_Category_Type",
-			openHrs: "Opening_Hours",
+			// openHrs: "Opening_Hours",
 			photos: "Restaurant_Photo",
 			promotions: "Promotions",
 		};
@@ -170,17 +171,25 @@ const getRestaurantsList = async (req, res) => {
 
 		if (list.length > 0) {
 			for (const restObj of list) {
-				const alldb = { restaurant: restObj };
+				const alldb = { ...restObj };
+				let [row] = await pool.query(
+					`select AVG(rating) as avg, count(*) as counts FROM Restaurant_Review WHERE restaurantId = ?`,
+					[restObj.restaurantId]
+				);
+				alldb["reviews"] = Number.parseInt(row[0].counts);
+				alldb["avgRating"] = +parseFloat(row[0].avg).toFixed(1) ?? null;
+
 				for (const propKey in relatedTables) {
-					let [row] = await pool.query(
+					[row] = await pool.query(
 						`select * from ${relatedTables[propKey]} where restaurantId = ?`,
 						[restObj.restaurantId]
 					);
-					alldb[propKey] = row[0] ?? null;
+					alldb[propKey] = row ?? null;
 				}
+
 				data.push(alldb);
 			}
-			res.status(200).json({
+			return res.status(200).json({
 				status: "OK",
 				data: data,
 			});

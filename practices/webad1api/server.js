@@ -3,15 +3,6 @@ const app = express();
 
 require("dotenv").config();
 const PORT = process.env.PORT;
-// const cors = require("cors");
-
-// app.use(
-// 	cors({
-// 		origin: "*",
-// 		methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE", "PATCH"],
-// 		credentials: true,
-// 	})
-// );
 
 //(middleware) parse form data. The express.urlencoded() function is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
 // common approach using extended: false

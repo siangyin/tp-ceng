@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "3e6ce795-451e-40f0-8d6a-a9a026b1b8a7",
+		"name": "TP-WEBAD1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17755400"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "REGISTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Anthony Lew\",\n    \"email\":\"lew1995@gmail.com\",\n    \"password\":\"antlew95\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"yippee@gmail.com\",\n    \"password\":\"yippee\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USERS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/user/:userId",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Yann Min\",\n    \"email\": \"yann@gmail.com\",\n    \"password\": \"yanmm8899\",\n    \"role\": \"user\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/user/:userId",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset PW",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/user/resetpasswordFor?email=j@gmail.com",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"resetpasswordFor"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "j@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Restaurants",
+			"item": [
+				{
+					"name": "CREATE RESTAURANT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurant\": {\n        \"name\": \"My Awesome Cafe\",\n        \"description\": \"Singapore's 1st TCM Hospital transformed into #1 Cafe. Open 365 days a year, with a menu offered all day long from opening to closing, we are a very cool Family (our team is our family indeed) and cosy cafe / bistro / bar that serves breakfast, lunch, snacks, dinner and late dinner. We took over the very first Traditional Chinese Medicine Hospital dated 1952 and converted it into a chill-out place that bakes its own bread, becomes a bistro at lunchtime and transforms into a bar / bistro in the evening. We offer salads, sandwiches, burgers, wraps, hot main courses, desserts, protein shakes for the sporty guys, an acai menu for those in need of the purest available, platters to share.\",\n        \"website\": \"http://www.myawesomecafe.com/\",\n        \"contact\": \"+65 8798 1783\",\n        \"add1\": \"202 Telok Ayer Street\",\n        \"add2\": \"Singapore 068639\",\n        \"add3\": \"\",\n        \"city\": null,\n        \"country\": \"Singapore\",\n        \"postalCode\": \"068639\",\n        \"area\": \"Central Area/City Area\"\n    },\n    \"categories\": {\n        \"type\": [\n            \"Bar/ Bistro\",\n            \"Cafés\",\n            \"Casual\"\n        ],\n        \"cuisine\": [\n            \"Asian\"\n        ]\n    },\n    \"openHrs\": [\n        {\n            \"dayOfWeek\": \"Daily\",\n            \"valueText\": \"09:00 AM - 10:00 PM\"\n        }\n    ],\n    \"photos\": [\n        {\n            \"photoUrl\": \"https://images.squarespace-cdn.com/content/v1/57222aa87c65e4e273671ded/1462457775188-75PWAA3CH8IY86GRI7VN/image-asset.png\",\n            \"defaultPhoto\": true\n        },\n        {\n            \"photoUrl\": \"https://static.thehoneycombers.com/wp-content/uploads/sites/2/2020/10/telok-ayer-guide-My-Awesome-Cafe-via-Facebook.jpg\"\n        },\n        {\n            \"photoUrl\": \"https://images.squarespace-cdn.com/content/v1/57222aa87c65e4e273671ded/1462208405615-J9OVCBVG6C84ZIF8L1FK/My+Awesome+Cafe+-+18.jpg\"\n        },\n        {\n            \"photoUrl\": \"https://4.bp.blogspot.com/-FAWEf-if7Vs/UzpwVJzx83I/AAAAAAAAIhk/uzuzN6Xzfxw/s1600/4.jpg\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/restaurant",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET A Restaurant detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{URL}}/api/v1/restaurant/:id",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"restaurant",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL Restaurants listing",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{URL}}/api/v1/restaurant",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"restaurant"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Review",
+			"item": [
+				{
+					"name": "http://{{URL}}/api/v1/restaurant/:id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"restaurantId\": 2,\n    \"userId\": 4,\n    \"title\": \"Superb!\",\n    \"comment\": \"What can I say? It was an absolutely fabulous Easter dinner! Everything was wonderful, starting from the buzzy, bustling restaurant and its chic decor of giant celeb portraits, right down to the exquisite dishes as well as the seamless, impeccable yet friendly service. The staff seemed to work in synergy, giving us the impression that they were always within earshot, on hand to help with requests and recommendations at every turn, and with ready smiles. Every dish was divine. We had a couple of beautifully plated tuna tartare and lobster starters. Each bite revealed a delightfully delicate explosion of flavours. For the main, we had the “Wagyu Tasting from America, Australia & Japan”. It was recommended that we start with the largest Aussie cut, followed by the medium sized American, and then, the smallest and most expensive Japanese cut. The Aussie cut was surprisingly so flavourful that the American cut kind of paled in comparison, But needless to say, the star of the show was the tender Japanese Wagyu, with its incredible marbling. Seriously, this tasting platter celebrates beef! We were stuffed pretty soon but I still managed to tuck into a peanut chocolate bar of a dessert. (Decadently yummy!) They say “a picture is worth a thousand words”. Well, I’ll leave you with some photos (but excuse me if my photography doesn’t do it justice!)\",\n    \"rating\": 5,\n    \"photos\":[\"https://burpple-3.imgix.net/foods/1669736948_review_image1956136_original.?w=420&dpr=1&fit=crop&q=80&auto=format\",\"https://1.bp.blogspot.com/-jJlZAV_j8ZI/VhxlenmXObI/AAAAAAAASJc/6HghoF3jFvo/s1600/16.JPG\",\"https://i.ytimg.com/vi/t7YfvW-jLuU/maxresdefault.jpg\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{URL}}/api/v1/review",
+							"protocol": "http",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"review"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

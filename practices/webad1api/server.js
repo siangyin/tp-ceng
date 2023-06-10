@@ -26,8 +26,8 @@ app.use("/api/v1/restaurant", restaurantRouter);
 app.use("/api/v1/review", reviewRouter);
 
 app.get("/index.html", (req, res) => {
-	console.log(req.params);
-	res.sendFile(__dirname + "/" + "index.html");
+	console.log(req.params, __dirname);
+	res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(PORT, (req, res) => {

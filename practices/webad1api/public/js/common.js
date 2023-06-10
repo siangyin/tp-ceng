@@ -1,3 +1,4 @@
+"use strict";
 // https://example.org:8080/foo/bar?q=baz#bang
 // pathname : /index.html
 // search ? uuuu=ooo eg: ?q=baz
@@ -5,17 +6,29 @@
 
 let currentPath = window.location.pathname;
 let currentParams = new URLSearchParams(window.location.search);
-console.log(currentPath, window.location.search); // /index.html, ?sampl=ooo&sample=oo
+console.log(currentPath); // /index.html, ?sampl=ooo&sample=oo
+console.log(currentParams);
+console.log(
+	"search is",
+	window.location.search,
+	",hash is",
+	window.location.hash
+);
+// CONSTANTS & VARIABLES
 const BE_URL = "http://localhost:3000";
+let signedInUser;
+let childNodes;
 
-function convertToChildNode(item) {
-	const tmp = document.createElement("div");
-	tmp.innerHTML = item;
-	return tmp.childNodes;
-}
+const allPaths = {
+	register: "/register.html",
+	login: "/login.html",
+};
+// DOM ELEMENTS
 
 const commonHeader = document.getElementById("commonHeader");
 const commonFooter = document.getElementById("commonFooter");
+
+// HTML COMPONENTS
 
 const navbar = `
     <nav class="uk-navbar-container">
@@ -48,15 +61,13 @@ const navbar = `
 							<div class="uk-navbar-dropdown">
 								<ul class="uk-nav uk-navbar-dropdown-nav">
 									${
-										currentPath === "/register.html"
+										currentPath === allPaths.register
 											? '<li class="uk-active">'
 											: "<li>"
-									}<a href="/register.html">Register</a></li>
-									${
-										currentPath === "/login.html"
-											? '<li class="uk-active">'
-											: "<li>"
-									}<a href="/login.html">Login</a></li>
+									}<a href=${allPaths.register}>Register</a></li>
+									${currentPath === allPaths.login ? '<li class="uk-active">' : "<li>"}<a href=${
+	allPaths.login
+}>Login</a></li>
 									<li class="uk-nav-header">Account</li>
 									<li><a href="#">Profile</a></li>
 									<li><a href="#">Reviews</a></li>
@@ -93,15 +104,6 @@ const footer = `
     </div>
 `;
 
-let childNodes = convertToChildNode(navbar);
-commonHeader.append(...childNodes);
-
-childNodes = convertToChildNode(breadCrumb);
-commonHeader.append(...childNodes);
-
-childNodes = convertToChildNode(footer);
-commonFooter.append(...childNodes);
-
 // function updateHeadElements() {
 // 	let filename = "";
 // 	if (currentPath == "/") {
@@ -127,8 +129,44 @@ commonFooter.append(...childNodes);
 // 	// document.head.appendChild(newStyleLink);
 // }
 
-window.addEventListener("DOMContentLoaded", (event) => {
-	updateHeadElements();
-	console.log(document.readyState); // loading - interactive - complete
-	console.log("page is fully loaded" + event.timeStamp);
-});
+// window.addEventListener("DOMContentLoaded", (event) => {
+// 	// updateHeadElements();
+// 	console.log(document.readyState); // loading - interactive - complete
+// 	console.log("page is fully loaded" + event.timeStamp);
+// });
+
+// FUNCTIONS
+
+function convertToChildNode(item) {
+	const tmp = document.createElement("div");
+	tmp.innerHTML = item;
+	return tmp.childNodes;
+}
+
+function removeAllChildsElement(parent) {
+	parent.hasChildNodes() && parent.replaceChildren();
+}
+
+function capitalised(word) {
+	return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function isEmptyStr(str) {
+	return !str || str.length === 0;
+}
+
+function validateEmail(email) {
+	const validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+	return validRegex.test(email);
+}
+
+// APPEND COMPONENTS
+
+childNodes = convertToChildNode(navbar);
+commonHeader.append(...childNodes);
+
+childNodes = convertToChildNode(breadCrumb);
+commonHeader.append(...childNodes);
+
+childNodes = convertToChildNode(footer);
+commonFooter.append(...childNodes);

@@ -24,11 +24,7 @@
 
 		<!-- MAIN CONTENT START -->
 		<main class="uk-margin-medium uk-container">
-			<div
-				id="user-account-content"
-				class="uk-grid-collapse uk-child-width-expand@s"
-				uk-grid
-			>
+			<div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
 				<div class="uk-visible@s">
 					<img src="images/mobile-login.svg" alt="mobile-login" />
 				</div>
@@ -40,28 +36,31 @@
 						<h2 class="uk-heading-divider uk-margin-large-bottom">
 							Create Account
 						</h2>
+						<div id="alertMsg"></div>
 						<label for="username">Username</label>
 						<input
 							class="uk-input uk-margin-small-bottom"
+							id="username"
 							type="text"
 							placeholder="Username"
-							id="username"
 						/>
 						<label for="email">Email</label>
 						<input
 							class="uk-input uk-margin-small-bottom"
+							id="email"
 							type="email"
 							placeholder="Email"
 						/>
 						<label for="password">Password</label>
 						<input
 							class="uk-input uk-margin-small-bottom"
+							id="password"
 							type="password"
 							placeholder="Password"
 						/>
 
 						<button
-							id="userRegisterBtn"
+							id="userAccessBtn"
 							class="uk-margin-small uk-button uk-button-danger uk-width-1-1"
 						>
 							Register
@@ -82,7 +81,7 @@
 		<footer id="commonFooter"></footer>
 		<!-- FOOTER END -->
 
-		<!-- <script src="js/index.js"></script> -->
 		<script src="js/common.js"></script>
+		<script src="js/userAccess.js"></script>
 	</body>
 </html>

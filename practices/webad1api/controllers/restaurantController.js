@@ -160,18 +160,22 @@ const getRestaurantDetail = async (req, res) => {
 const getRestaurantsList = async (req, res) => {
 	try {
 		const data = [];
-		// let msg;
-		const relatedTables = {
-			categories: "Restaurant_Category_Type",
-			// openHrs: "Opening_Hours",
-			photos: "Restaurant_Photo",
-			promotions: "Promotions",
-		};
 		const [list] = await pool.query("select * from restaurants");
 
 		if (list.length > 0) {
 			for (const restObj of list) {
-				const alldb = { ...restObj };
+				const alldb = {
+					restaurantId: restObj.restaurantId,
+					name: restObj.name,
+					area: restObj.area,
+					reviews: 0,
+					avgRating: null,
+					status: restObj.status,
+					photo: null,
+					type: [],
+					cuisine: [],
+				};
+
 				let [row] = await pool.query(
 					`select AVG(rating) as avg, count(*) as counts FROM Restaurant_Review WHERE restaurantId = ?`,
 					[restObj.restaurantId]
@@ -179,18 +183,32 @@ const getRestaurantsList = async (req, res) => {
 				alldb["reviews"] = Number.parseInt(row[0].counts);
 				alldb["avgRating"] = +parseFloat(row[0].avg).toFixed(1) ?? null;
 
-				for (const propKey in relatedTables) {
-					[row] = await pool.query(
-						`select * from ${relatedTables[propKey]} where restaurantId = ?`,
-						[restObj.restaurantId]
-					);
-					alldb[propKey] = row ?? null;
+				// get Restaurant_Category_Type
+				[row] = await pool.query(
+					`select * from Restaurant_Category_Type where restaurantId = ?`,
+					[restObj.restaurantId]
+				);
+				if (row.length > 0) {
+					row.forEach((item) => {
+						if (item.categoryType == "Cuisine") {
+							alldb.cuisine.push(item.typeName);
+						} else {
+							alldb.type.push(item.typeName);
+						}
+					});
 				}
+				//  get Restaurant_Photo
+				[row] = await pool.query(
+					`select * from Restaurant_Photo where restaurantId = ? and defaultPhoto =?`,
+					[restObj.restaurantId, true]
+				);
+				alldb.photo = row[0].photoUrl ?? null;
 
 				data.push(alldb);
 			}
 			return res.status(200).json({
 				status: "OK",
+				count: data.length,
 				data: data,
 			});
 		}
@@ -198,7 +216,6 @@ const getRestaurantsList = async (req, res) => {
 		res.status(404).json({
 			status: "Not found",
 			msg: "No data found",
-			data: list,
 		});
 	} catch (error) {
 		res.status(500).json({

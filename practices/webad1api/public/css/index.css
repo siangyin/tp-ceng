@@ -9,3 +9,19 @@ footer {
 main {
 	min-height: calc(100vh - 300px);
 }
+
+.uk-card-media-top {
+	margin: 0px auto;
+}
+.restaurantImg {
+	height: 150px;
+	width: auto;
+}
+
+.starIcon > svg {
+	fill: #ffd166;
+	margin-bottom: 5px;
+}
+
+#cardInfo {
+}

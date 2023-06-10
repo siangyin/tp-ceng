@@ -5,15 +5,16 @@
 // hash #bang
 
 let currentPath = window.location.pathname;
-let currentParams = new URLSearchParams(window.location.search);
+// let currentParams = new URLSearchParams(window.location.search);
 console.log(currentPath); // /index.html, ?sampl=ooo&sample=oo
-console.log(currentParams);
-console.log(
-	"search is",
-	window.location.search,
-	",hash is",
-	window.location.hash
-);
+// console.log(currentParams);
+// console.log(
+// 	"search is",
+// 	window.location.search,
+// 	",hash is",
+// 	window.location.hash
+// );
+
 // CONSTANTS & VARIABLES
 const BE_URL = "http://localhost:3000";
 let signedInUser;

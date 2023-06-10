@@ -1,4 +1,5 @@
 "use strict";
+
 let userAction;
 const userAccessBtn = document.getElementById("userAccessBtn");
 const alertMsg = document.getElementById("alertMsg");

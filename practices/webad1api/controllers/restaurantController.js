@@ -106,6 +106,7 @@ const createRestaurant = async (req, res) => {
 
 			return res.status(200).json({
 				status: "OK",
+				msg: "Restaurant has been added successfully",
 				data: restaurant,
 				hasError: msg,
 			});
@@ -113,6 +114,7 @@ const createRestaurant = async (req, res) => {
 
 		res.status(400).json({
 			status: "Invalid request",
+			msg: "Missing detail",
 		});
 	} catch (error) {
 		res.status(500).json({

@@ -5,15 +5,6 @@
 // hash #bang
 
 let currentPath = window.location.pathname;
-// let currentParams = new URLSearchParams(window.location.search);
-console.log(currentPath); // /index.html, ?sampl=ooo&sample=oo
-// console.log(currentParams);
-// console.log(
-// 	"search is",
-// 	window.location.search,
-// 	",hash is",
-// 	window.location.hash
-// );
 
 // CONSTANTS & VARIABLES
 const BE_URL = "http://localhost:3000";
@@ -146,6 +137,17 @@ function convertToChildNode(item) {
 
 function removeAllChildsElement(parent) {
 	parent.hasChildNodes() && parent.replaceChildren();
+}
+
+function addAlertMsg(parent, msg, status = "warning") {
+	removeAllChildsElement(parent);
+	const childNodes = convertToChildNode(`
+          <div class="uk-alert-${status}" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p>${msg}</p>
+          </div>
+          `);
+	parent.append(...childNodes);
 }
 
 function capitalised(word) {

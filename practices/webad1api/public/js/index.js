@@ -54,8 +54,8 @@ function createCardItem(item) {
 	const newDiv = `
 	<div class="restaurantCard" id=${item.restaurantId}>
 		<div class="uk-card uk-card-muted">
-			<div class="uk-card-media-top">
-				<img class="restaurantImg uk-position-top-center uk-position-relative"
+			<div class="uk-card-media-top" >
+				<img class="restaurantImg uk-position-top-center uk-position-relative  uk-background-cover"
 					src=${item.photo}
 					alt=${item.name}
 				/>

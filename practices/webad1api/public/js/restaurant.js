@@ -129,7 +129,9 @@ const restaurantForm = document.getElementById("restaurantForm");
 const submitBtn = document.getElementById("submitBtn");
 const alertMsg = document.getElementById("alertMsg");
 
-console.log(pageStatus);
+if (pageStatus.action == "edit" && pageStatus.id) {
+	getRestaurant(pageStatus.id);
+}
 
 function appendFormItem(field) {
 	let newFormItem = `
@@ -154,6 +156,30 @@ function appendFormItem(field) {
 	restaurantForm.append(...result);
 }
 
+async function getRestaurant(id) {
+	pageStatus.loading = true;
+	let url = `${BE_URL}/api/v1/restaurant/${id}`;
+	try {
+		fetch(url, {
+			method: "GET",
+			headers: {
+				Accept: "application/json",
+			},
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				if (res.status == "OK") {
+					pageStatus = {
+						loading: false,
+						detail: res.data,
+					};
+				}
+			});
+	} catch (error) {
+		console.log(error);
+	}
+}
+
 async function postRestaurant(reqBody) {
 	let url = `${BE_URL}/api/v1/restaurant`;
 	try {
@@ -171,7 +197,7 @@ async function postRestaurant(reqBody) {
 					addAlertMsg(alertMsg, res.msg.message ?? res.msg);
 				} else {
 					removeAllChildsElement(alertMsg);
-					addAlertMsg(alertMsg, res.msg);
+					addAlertMsg(alertMsg, res.msg, "success");
 					restaurantForm.reset();
 					// window.location.assign("/index.html");
 				}

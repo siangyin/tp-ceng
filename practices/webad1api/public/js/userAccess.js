@@ -13,43 +13,59 @@ let requiredFields = [];
 switch (currentPath) {
 	case "/register.html":
 		userAction = "register";
-		requiredFields = ["username", "email", "password"];
+		requiredFields = [
+			{
+				name: "username",
+				input: "input",
+				type: "text",
+			},
+			{
+				name: "email",
+				input: "input",
+				type: "email",
+			},
+			{
+				name: "password",
+				input: "input",
+				type: "password",
+			},
+		];
 		break;
 	case "/login.html":
 		userAction = "login";
-		requiredFields = ["email", "password"];
+		requiredFields = [
+			{
+				name: "email",
+				input: "input",
+				type: "email",
+			},
+			{
+				name: "password",
+				input: "input",
+				type: "password",
+			},
+		];
 		break;
 }
 
 // FUNCTIONS
 
-function validateFormInput() {
+function validateFormInput(requiredFields) {
 	const reqBody = {};
 	const missingField = [];
 
 	// loop thru required field using id to find input value
 	for (const field of requiredFields) {
-		const fieldVal = document.getElementById(`${field}`).value;
+		const fieldVal = document.getElementById(`${field.name}`).value;
 		if (Boolean(fieldVal)) {
-			reqBody[field] = fieldVal;
+			reqBody[field.name] = fieldVal;
 		} else {
-			reqBody[field] = undefined;
-			missingField.push(field);
+			reqBody[field.name] = undefined;
+			missingField.push(field.name);
 		}
 	}
 
 	return { reqBody, missingField };
-}
-
-function addAlertMsg(msg) {
-	removeAllChildsElement(alertMsg);
-	const childNodes = convertToChildNode(`
-          <div class="uk-alert-warning" uk-alert>
-            <a class="uk-alert-close" uk-close duration="10"></a>
-            <p>${msg}</p>
-          </div>
-          `);
-	alertMsg.append(...childNodes);
 }
 
 async function submitUserAccess(action, reqBody) {
@@ -59,13 +75,14 @@ async function submitUserAccess(action, reqBody) {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
+				// Authorization: `Bearer ${sessionStorage.getItem("token")}`,
 			},
 			body: JSON.stringify(reqBody),
 		})
 			.then((res) => res.json())
 			.then((res) => {
 				if (res.status !== "OK") {
-					addAlertMsg(res.msg);
+					addAlertMsg(alertMsg, res.msg);
 				} else {
 					removeAllChildsElement(alertMsg);
 					signedInUser = res.data;
@@ -110,7 +127,7 @@ formInput.forEach((item) => {
 // based on button onclick
 userAccessBtn.addEventListener("click", (e) => {
 	e.preventDefault();
-	const checkForm = validateFormInput();
+	const checkForm = validateFormInput(requiredFields);
 	// if no missing field submit form request
 	if (checkForm.missingField.length == 0) {
 		formInput.forEach(
@@ -119,7 +136,7 @@ userAccessBtn.addEventListener("click", (e) => {
 		if (validateEmail(checkForm.reqBody.email)) {
 			submitUserAccess(userAction, checkForm.reqBody);
 		} else {
-			addAlertMsg("Please enter valid email address");
+			addAlertMsg(alertMsg, "Please enter valid email address");
 			emailInput.className = "uk-input uk-form-danger uk-margin-small-bottom";
 		}
 	} else {
@@ -127,6 +144,6 @@ userAccessBtn.addEventListener("click", (e) => {
 			`Please enter missing ${
 				checkForm.missingField.length > 1 ? "fields:" : "field:"
 			} ` + checkForm.missingField.toString().replace(",", ", ");
-		addAlertMsg(msg);
+		addAlertMsg(alertMsg, msg);
 	}
 });
